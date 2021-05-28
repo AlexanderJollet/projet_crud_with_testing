@@ -2,8 +2,24 @@ const User = require('../model/model');
 const app = require('../../server');
 const request = require('chai');
 const expect = require('chai').expect;
+const control = require ('../controller/controller');
+const UserAdd = { name: "alex", lastname: "jollet", email: "email@gmail.com", phone_number: 0645636347 };
 
-describe("Test API", () =>{
+describe("Unit test CRUD", () => {
+    it("Should verify all data"), async function() {
+        expect(UserAdd.name).to.equal("alex");
+        expect(UserAdd.name).to.not.be.empty;
+        expect(UserAdd.phone_number).to.have.lengthOf(10);
+        expect(UserAdd.phone_number).to.not.be.empty;
+        expect(UserAdd.lastname).to.equal("jollet");
+        expect(UserAdd.lastname).to.not.be.empty;
+        expect(UserAdd.email).to.have.string('@gmail.com');
+        expect(UserAdd.email).to.not.be.empty;
+    }
+})
+
+
+describe("Test API (integration)", () =>{
     beforeEach(async () =>{
         await User.deleteMany({});
     });
