@@ -36,7 +36,7 @@ describe("Test API", () =>{
             await request(app).post("/api/users").send(data);
 
             data = {
-                email: "hi@johndoe.com",//wrong email
+                email: "hi@com",//wrong email
                 phone_number: 0645454546,
             }
             //Send wrong data and expect error 401
